@@ -19,8 +19,8 @@ for line in tqdm(lines):
         utt, infer_text = line.strip().split('|')
     elif len(line.strip().split('|')) == 3:
         utt, infer_text, prompt_wav = line.strip().split('|')
-        if utt.endswith(".wav"):
-            utt = utt[:-4]
+    if utt.endswith(".wav"):
+        utt = utt[:-4]
     if not os.path.exists(os.path.join(wav_dir, utt + '.wav')):
         continue
 

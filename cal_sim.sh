@@ -16,7 +16,8 @@ cd $workdir/thirdparty/UniSpeech/downstreams/speaker_verification/
 timestamp=$(date +%s)
 thread_dir=/tmp/thread_metas_$timestamp/
 mkdir $thread_dir
-num_job=$ARNOLD_WORKER_GPU
+#num_job=$ARNOLD_WORKER_GPU
+num_job=${ARNOLD_WORKER_GPU:-1}
 num=`wc -l $wav_wav_text | awk -F' ' '{print $1}'`
 num_per_thread=`expr $num / $num_job + 1`
 sudo split -l $num_per_thread --additional-suffix=.lst -d $wav_wav_text $thread_dir/thread-
